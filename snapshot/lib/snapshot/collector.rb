@@ -128,10 +128,10 @@ module Snapshot
         return find_screenshot(subactivity) if subactivity["Title"] == "Synthesize event"
       end
 
-      if activity["Attachments"] && activity["Attachments"].last && activity["Attachments"].last["Filename"]
+      if activity["Attachments"] && activity["Attachments"].last && activity["Attachments"].last["Filename"] # Current Xcode (9.2) naming convention
         return activity["Attachments"].last["Filename"]
-      elsif activity["Attachments"]
-        return activity["Attachments"].last["Filename"]
+      elsif activity["Attachments"] && activity["Attachments"].last && activity["Attachments"].last["FileName"] # Xcode 7.2 naming convention
+        return activity["Attachments"].last["FileName"]
       else # Xcode 7.3 has stopped including 'Attachments', so we synthesize the filename manually
         return "Screenshot_#{activity['UUID']}.png"
       end

@@ -23,5 +23,17 @@ describe Snapshot do
         expect(Snapshot::Collector.attachments_in_file('snapshot/spec/fixtures/Xcode-7_3-TestSummaries.plist')).to contain_exactly(*expected_files)
       end
     end
+
+    describe '#attachments_in_file for Xcode 9.2 plist output' do
+      it 'finds attachments and returns filenames' do
+        expected_files = [
+          "Screenshot_658CD3E2-96C5-4598-86EF-18164AEDE71D.png",
+          "Screenshot_31FC792E-A9E9-4C04-A31D-9901EC425CD9.png",
+          "Screenshot_AE21B4B1-6C45-44A2-BDF6-A30A33735688.png",
+          "Screenshot_0B17C04E-5ED1-4667-AF31-EFDDCAC71EDB.png"
+        ]
+        expect(Snapshot::Collector.attachments_in_file('snapshot/spec/fixtures/Xcode-9_2-TestSummaries.plist')).to contain_exactly(*expected_files)
+      end
+    end
   end
 end
