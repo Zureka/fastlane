@@ -131,7 +131,7 @@ module Snapshot
       if activity["Attachments"] && activity["Attachments"].last && activity["Attachments"].last["Filename"]
         return activity["Attachments"].last["Filename"]
       elsif activity["Attachments"]
-        return activity["Attachments"].last["FileName"]
+        return activity["Attachments"].last["Filename"]
       else # Xcode 7.3 has stopped including 'Attachments', so we synthesize the filename manually
         return "Screenshot_#{activity['UUID']}.png"
       end
